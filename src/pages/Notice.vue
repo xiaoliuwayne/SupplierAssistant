@@ -1,5 +1,9 @@
 <template>
   <div class="notic">
+    <x-header @on-click-back="true"
+              @right-options.showMore="true"
+              class="header-color">公告
+    </x-header>
     {{content}}
   </div>
 </template>
