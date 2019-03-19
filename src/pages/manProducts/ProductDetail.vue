@@ -1,5 +1,6 @@
 <template>
  <div>
+   <x-header title="商品详情"></x-header>
    <h5>基础信息</h5>
    <div class="base-info">
      <span>
@@ -187,6 +188,8 @@
         }
       },
       created(){
+        window.TABBAR_STATUS = 1;
+        console.log('ddddd',window.TABBAR_STATUS);
         let pro = this.$route.params.pro;
         this.product = this.$route.params.pro;
         this.init(pro)
@@ -194,6 +197,10 @@
       methods:{
         init(pro){
           console.log('pro',pro)
+        },
+        back(){
+          alert(11)
+          this.$router.go(-1)
         }
       }
     }
