@@ -1,8 +1,6 @@
 <template>
   <div>
-   <x-header @on-click-back="true"
-             @right-options.showMore="true"
-             class="header-color">供应商助手</x-header>
+   <x-header title="供应商助手"></x-header>
     <group class="xgroup">
       <x-input title="账号" v-model="account"></x-input>
       <x-input title="密码"  type="password" v-model="pwd"></x-input>
@@ -41,9 +39,6 @@
 </script>
 
 <style scoped>
-  .header-color{
-   background: #353535;
- }
   .xgroup{
     margin: 4vw 0 0 0;
   }
