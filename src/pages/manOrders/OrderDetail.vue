@@ -1,5 +1,6 @@
 <template>
   <div class="ord-detail">
+    <x-header title="订单详情"></x-header>
     <div class="order-info">
       <span class="hder">
         <span>订单号：{{orderRecord.orderNo}}</span>
@@ -56,6 +57,7 @@
         }
       },
       created(){
+        window.TABBAR_STATUS = 2;
         let record = this.$route.params.record;
         this.orderRecord = this.$route.params.record;
         this.init(record)
