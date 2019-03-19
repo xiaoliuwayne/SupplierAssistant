@@ -1,5 +1,6 @@
 <template>
   <div>
+    <x-header title="商品管理"></x-header>
     <div style="width: 100%;background: white">
       <div class="nav-desc">
         <span v-for="item in navWord" :class="item.status ? 'actClass' : 'norClass'" @click="changeStatus(item.desc)">{{item.desc}}</span>
@@ -67,6 +68,11 @@
       },
       goDetail(pro){
         this.$router.push({name:'ProductDetail',params:{'pro':pro}})
+      },
+      back(){
+        console.log(22222);
+        alert(22);
+        this.$router.go(-1);
       }
     }
   }
