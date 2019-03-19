@@ -1,6 +1,6 @@
 <template>
-  <div class="page-size">
-    sdjsdsdsd
+  <div>
+    <x-header title="首页"></x-header>
     <div class="user-info">
       <img src="../../assets/logo.png" class="headImg">
       <span>
@@ -14,26 +14,6 @@
       </router-link>
     </div>
     <div class="show-data">
-      <!--<table border="1" style="width: 100%;">-->
-        <!--<tr>-->
-          <!--<th colspan="3">电话</th>-->
-        <!--</tr>-->
-        <!--<tr>-->
-          <!--<td>Bill Gates</td>-->
-          <!--<td>555 77 854</td>-->
-          <!--<td>555 77 855</td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-          <!--<td><p>jdjdj</p><p>jjjj</p></td>-->
-          <!--<td>555 77 854</td>-->
-          <!--<td>555 77 855</td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-          <!--<td>Bill Gates</td>-->
-          <!--<td>555 77 854</td>-->
-          <!--<td>555 77 855</td>-->
-        <!--</tr>-->
-      <!--</table>-->
       <div class="detail-data">
         <p class="p1">{{'23,234.00'}}元</p>
         <p class="p2">{{'今日订单金额'}}</p>
@@ -91,11 +71,17 @@
           return{
             title:'供应商助手',
           }
-        }
+        },
+      methods:{
+          back(){
+            this.$router.go(-1);
+          }
+      }
     }
 </script>
 
 <style scoped>
+
   .user-info{
     background: #fafaff;
     display: flex;
