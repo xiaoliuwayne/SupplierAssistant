@@ -1,5 +1,6 @@
 <template>
-  <div class="page-size">
+  <div>
+    <x-header title="订单管理"></x-header>
     <div style="width: 100%;background: white">
       <div class="nav-desc">
         <span v-for="item in navWord" :class="item.status ? 'actClass' : 'norClass'" @click="changeStatus(item.desc)">{{item.desc}}</span>
