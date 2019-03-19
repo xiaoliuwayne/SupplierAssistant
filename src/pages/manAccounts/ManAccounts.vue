@@ -1,5 +1,6 @@
 <template>
-  <div class="page-size">
+  <div>
+    <x-header title="对账结算"></x-header>
     <div style="width: 100%;background: white">
       <div class="nav-desc">
         <span v-for="item in navWord" :class="item.status ? 'actClass' : 'norClass'" @click="changeStatus(item.desc)">{{item.desc}}</span>
@@ -47,8 +48,8 @@
     methods:{
       changeStatus(desc){
         this.navWord.forEach( i => {
-          console.log('i.desc',i.desc)
-          console.log('i.status',i.status)
+          console.log('i.desc',i.desc);
+          console.log('i.status',i.status);
           if(i.desc === desc){
             i.status = true;
           }else {i.status = false}
