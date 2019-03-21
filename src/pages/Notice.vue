@@ -15,6 +15,9 @@
         return{
           content:'公告内容后台设置....',
         }
+      },
+      created(){
+        window.TABBAR_STATUS = 0;
       }
     }
 </script>

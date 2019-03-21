@@ -11,6 +11,7 @@ import Orders from '../pages/manOrders/ManOrders.vue'
 import OrderDetail from '../pages/manOrders/OrderDetail.vue'
 import Accounts from '../pages/manAccounts/ManAccounts.vue'
 import Notice from '../pages/Notice.vue'
+import TabNav from '../components/TabNar'
 Vue.use(Router);
 
 const routes = [
@@ -50,6 +51,7 @@ const routes = [
   {path: '/orderdetail', component: OrderDetail,name:'OrderDetail'},
   {path: '/Notice', component: Notice,name:'Notice'},
   {path: '/productdetail', component: ProductDetail,name:'ProductDetail'},
+  {path: '/tabvar', component: TabNav,name:'TabNav'},
 ];
 
 // 页面刷新时，重新赋值token

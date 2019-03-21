@@ -1,0 +1,33 @@
+/*多个页面公用的样式*/
+
+/*搜索框*/
+.search-desc{
+  width: 100%;
+  height: 40px;
+  margin: 10px 0;
+  line-height: 40px;
+}
+.xinput-search{
+  float: left;
+  height: 30px;
+  width: 70vw;
+  font-size: 14px;
+  border-radius: 5px;
+  border: solid 1px #e6e6ea;
+  margin: 5px;
+  padding: 0;
+}
+.search-desc button{
+  width: 16vw;
+  height: 35px;
+  background-color: #1aad19;
+  border-radius: 6px;
+  border: solid 1px rgba(5, 5, 5, 0.08);
+  color: white;
+  margin: 3px 2vw;
+}
+
+/*.xheader{*/
+  /*height: 17vw;*/
+  /*width: 100vw;*/
+/*}*/

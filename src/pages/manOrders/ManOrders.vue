@@ -5,10 +5,10 @@
       <div class="nav-desc">
         <span v-for="item in navWord" :class="item.status ? 'actClass' : 'norClass'" @click="changeStatus(item.desc)">{{item.desc}}</span>
       </div>
-      <div class="search-desc">
-        <input placeholder="搜索单号"></input>
-        <button>搜索</button>
-      </div>
+      <group class="search-desc">
+        <x-input placeholder="搜索单号" v-model="keyword" class="xinput-search"></x-input>
+        <button @click="goSearch(keyword)">搜索</button>
+      </group>
     </div>
     <div class="order-data">
       <div class="header">
@@ -35,13 +35,19 @@
         navWord:[{'desc':'待发货','status':true},{'desc':'已发货','status':false}],
         orderData:[
           {'orderNo':'123456','money':'5200.60','orderStatus':'待发货','orderTime':'03-28 15:00'},
-          {'orderNo':'123456','money':'5200.60','orderStatus':'待发货','orderTime':'03-28 15:00'},
-          {'orderNo':'123456','money':'5200.60','orderStatus':'待发货','orderTime':'03-28 15:00'},
-          {'orderNo':'123456','money':'5200.60','orderStatus':'待发货','orderTime':'03-28 15:00'},
-          {'orderNo':'123456','money':'5200.60','orderStatus':'待发货','orderTime':'03-28 15:00'},
-          {'orderNo':'123456','money':'5200.60','orderStatus':'待发货','orderTime':'03-28 15:00'},
-        ]
+          {'orderNo':'111111','money':'5200.60','orderStatus':'待发货','orderTime':'03-28 15:00'},
+          {'orderNo':'112222','money':'5200.60','orderStatus':'待发货','orderTime':'03-28 15:00'},
+          {'orderNo':'222222','money':'5200.60','orderStatus':'待发货','orderTime':'03-28 15:00'},
+          {'orderNo':'33333','money':'5200.60','orderStatus':'待发货','orderTime':'03-28 15:00'},
+          {'orderNo':'44211','money':'5200.60','orderStatus':'待发货','orderTime':'03-28 15:00'},
+        ],
+        bckData:[],
       }
+    },
+    created(){
+      //深拷贝一个完整数据
+      let _ = require('lodash');
+      this.bckData = _.cloneDeep(this.orderData);
     },
     methods:{
       changeStatus(desc){
@@ -51,8 +57,16 @@
           }else {i.status = false}
         })
       },
-      goSearch(){
-        alert(this.keyword)
+      goSearch(keyword){
+        let _ = require('lodash');
+        this.orderData = _.cloneDeep(this.bckData);
+        let tmp = [];
+        this.orderData.forEach(item => {
+          if(item.orderNo && item.orderNo.indexOf(keyword)!==-1){
+            tmp.push(item)
+          }
+        });
+        this.orderData = tmp;
       },
       goDetail(record){
         this.$router.push({name:'OrderDetail',params:{'record':record}})
@@ -62,6 +76,7 @@
 </script>
 
 <style scoped>
+  @import "../../assets/css/mycss.css";
   .nav-desc{
     display: table;
     width: 100%;
@@ -110,12 +125,20 @@
     border: solid 1px rgba(5, 5, 5, 0.08);
   }
   input::-webkit-input-placeholder {
-    /* placeholder颜色  */
     color: #aab2bd;
-    /* placeholder字体大小  */
     font-size: 12px;
     /* placeholder位置  */
     /*text-align: right;*/
+    margin-left: 20px;
+  }
+  input::-moz-placeholder {
+    color: #aab2bd;
+    font-size: 12px;
+    left: 20px;
+  }
+  input::-ms-input-placeholder {
+    color: #aab2bd;
+    font-size: 12px;
     margin-left: 20px;
   }
 

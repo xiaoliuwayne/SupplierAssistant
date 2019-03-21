@@ -10,8 +10,14 @@ export default new Vuex.Store({
     state: {
         user: {},
         token: null,
-        title: ''
+        title: '',
+        isShow: true,
     },
+    // getter:{
+    //   tabbarShow: isShow => {
+    //     return !isShow
+    //   }
+    // },
     mutations: {
         [types.LOGIN]: (state, data) => {
             localStorage.token = data;

@@ -5,10 +5,10 @@
       <div class="nav-desc">
         <span v-for="item in navWord" :class="item.status ? 'actClass' : 'norClass'" @click="changeStatus(item.desc)">{{item.desc}}</span>
       </div>
-      <div class="search-desc">
-        <input placeholder="搜索单号"></input>
-        <button>搜索</button>
-      </div>
+      <group class="search-desc">
+        <x-input placeholder="搜索单号" v-model="keyword" class="xinput-search"></x-input>
+        <button @click="goSearch(keyword)">搜索</button>
+      </group>
     </div>
     <div class="acc-data">
       <div class="header">
@@ -42,8 +42,15 @@
           {'orderNo':'444444','payType':'周结','pay':'5,200.00','date':'2019.03.01','payStatus':'已支付'},
           {'orderNo':'555555','payType':'月结','pay':'5,200.00','date':'2019.03.01','payStatus':'已支付'},
           {'orderNo':'666666','payType':'月结','pay':'5,200.00','date':'2019.03.01','payStatus':'已支付'},
-        ]
+        ],
+        bckData:[]
       }
+    },
+    created(){
+      //深拷贝一个完整数据
+      let _ = require('lodash');
+      this.bckData = _.cloneDeep(this.accData);
+      // console.log('this.bckData',this.bckData);
     },
     methods:{
       changeStatus(desc){
@@ -54,12 +61,24 @@
             i.status = true;
           }else {i.status = false}
         })
+      },
+      goSearch(keyword){
+         let _ = require('lodash');
+         this.accData = _.cloneDeep(this.bckData);
+         let tmp = [];
+         this.accData.forEach(item => {
+           if(item.orderNo && item.orderNo.indexOf(keyword)!==-1){
+             tmp.push(item)
+           }
+         });
+         this.accData = tmp;
       }
     }
   }
 </script>
 
 <style scoped>
+  @import "../../assets/css/mycss.css";
   .nav-desc{
     display: table;
     width: 100%;
@@ -85,37 +104,24 @@
     font-size: 4vw;
     height: 100%;
   }
-  .search-desc{
-    width: 100%;
-    height: 40px;
-    margin: 10px 0;
-    line-height: 40px;
-  }
-  .search-desc input{
-    margin: 0 1vw 0 2vw;
-    width: 74vw;
-    height: 7vw;
-    background-color: #ffffff;
-    border-radius: 2px;
-    border: solid 1px #e6e6ea;
-    vertical-align: center;
-  }
-  .search-desc button{
-    width: 16vw;
-    height: 9vw;
-    background-color: #1aad19;
-    border-radius: 6px;
-    border: solid 1px rgba(5, 5, 5, 0.08);
-  }
+
   input::-webkit-input-placeholder {
-    /* placeholder颜色  */
     color: #aab2bd;
-    /* placeholder字体大小  */
     font-size: 12px;
     /* placeholder位置  */
     /*text-align: right;*/
     margin-left: 20px;
-   }
+  }
+  input::-moz-placeholder {
+    color: #aab2bd;
+    font-size: 12px;
+    text-align: left;
+  }
+  input::-ms-input-placeholder {
+    color: #aab2bd;
+    font-size: 12px;
+    margin-left: 20px;
+  }
   .acc-data{
     background: white;
     width: 100%;
