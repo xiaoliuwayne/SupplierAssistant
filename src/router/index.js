@@ -20,21 +20,21 @@ const routes = [
     name: 'Index',
     component: Index,
     meta: {
-      requireAuth: false,
+      // requireAuth:false,
     },
     redirect:'/home',
     children:[
       {path: '/home', component: Home,name:'Home',
-        meta:{requireAuth:false}
+        // meta:{requireAuth:false}
       },
       {path: '/products', component: Products,name:'Products',
-        meta:{requireAuth:false}
+        // meta:{requireAuth:false}
       },
       {path: '/orders', component: Orders,name:'Orders',
-        meta:{requireAuth:false}
+        // meta:{requireAuth:false}
       },
       {path: '/accounts', component: Accounts,name:'Accounts',
-        meta:{requireAuth:false}
+        // meta:{requireAuth:false}
       },
     ],
   },
