@@ -22,8 +22,16 @@ module.exports = {
     },
     // proxyTable: [
     //   {
-    //     context: ['/api','/ebuapi'],
-    //     target: 'http://ts.ebdaowei.com',
+    //     context: ['/ebuapi'],
+    //     target: 'http://ts.ebdaowei.com/ebuapi',
+    //     changeOrigin: true,
+    //         pathRewrite:{
+    //           '^/ebuapi': ''
+    //         }
+    //   },
+    //   {
+    //     context:['open.weixin.qq.com/'],
+    //     target:'https://open.weixin.qq.com/',
     //     changeOrigin: true
     //   }
     // ],
